@@ -29,7 +29,10 @@ class CRMManager:
         for threshold, deals in sorted(buckets.items(), reverse=True):
             emoji = emoji_map.get(threshold, ":white_circle:")
             for d in deals:
-                lines.append(f"{emoji} *{d.get('Client', '?')}* — {d['_days_stale']}d stale (stage: {d.get('Stage', '?')})")
+                client = d.get('Client', '?')
+                days_stale = d['_days_stale']
+                stage = d.get('Stage', '?')
+                lines.append(f"{emoji} *{client}* — {days_stale}d stale (stage: {stage})")
         return "\n".join(lines)
 
     def overdue_invoices(self) -> str:
@@ -70,7 +73,10 @@ class CRMManager:
             return ":white_check_mark: No pending signals"
         lines = [f":satellite: *{len(signals)} Pending Signals*"]
         for s in signals:
-            lines.append(f"• {s.get('Source Client', '?')} → {s.get('Mentioned Company', '?')}: {s.get('Signal Text', '')[:80]}")
+            source = s.get('Source Client', '?')
+            company = s.get('Mentioned Company', '?')
+            text = s.get('Signal Text', '')[:80]
+            lines.append(f"• {source} → {company}: {text}")
         return "\n".join(lines)
 
     def promote_signal(self, row: int, **overrides) -> str:

@@ -131,7 +131,8 @@ def get_network_value(client: str) -> dict:
     direct = sum(_budget(d) for d in all_deals if d.get("Client", "").lower() == client.lower())
     network = sum(
         _budget(d) for d in all_deals
-        if (d.get("Network Parent", "") or d.get("Referred By", "")).lower() == client.lower()
+        if (d.get("Network Parent", "") or d.get("Referred By", "")).lower()
+        == client.lower()
     )
     return {"client": client, "direct_value": direct, "network_value": network, "total": direct + network}
 
