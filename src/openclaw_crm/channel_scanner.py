@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import Any
 
 
 def scan_channels(hours_back: int = 24) -> list[dict]:
