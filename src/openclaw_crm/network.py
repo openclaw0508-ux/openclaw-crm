@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
 
 from openclaw_crm.sheets import read_sheet, append_sheet, update_sheet
 from openclaw_crm.config import get_spreadsheet_id
