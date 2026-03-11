@@ -89,7 +89,7 @@ class CRMManager:
         result = network.dismiss_signal(row)
         if result.get("ok"):
             return f":white_check_mark: Signal row {row} dismissed"
-        return f":x: Failed to dismiss signal"
+        return ":x: Failed to dismiss signal"
 
     def record_signal(self, **kwargs) -> str:
         result = network.add_signal(kwargs)
