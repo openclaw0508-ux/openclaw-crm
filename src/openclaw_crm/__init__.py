@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from datetime import date
 
 from openclaw_crm import pipeline, network
 
@@ -94,5 +93,5 @@ class CRMManager:
     def record_signal(self, **kwargs) -> str:
         result = network.add_signal(kwargs)
         if result.get("ok"):
-            return f":white_check_mark: Signal recorded"
-        return f":x: Failed to record signal"
+            return ":white_check_mark: Signal recorded"
+        return ":x: Failed to record signal"
